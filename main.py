@@ -16,11 +16,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @tasks.loop(seconds=10)
 async def change_status():
-    # Liste des statuts à alterner
-    # Utilisation de CustomActivity pour le premier et Game pour le second
+    # Liste des statuts à alterner (tous en CustomActivity)
     statuses = [
         discord.CustomActivity(name=STATUS_1),
-        discord.Game(name=STATUS_2)
+        discord.CustomActivity(name=STATUS_2)
     ]
     
     for status in statuses:
