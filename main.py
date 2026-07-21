@@ -4,7 +4,7 @@ import os
 import asyncio
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CUSTOM_STATUS = os.getenv("TEXT_STATUS", "Mon statut personnalisé par défaut")
+CUSTOM_STATUS = os.getenv("TEXT_STATUS", "RecRDZ v0.2.0")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -16,7 +16,10 @@ async def on_ready():
     print(f"Bot connecté : {bot.user.name}")
     print(f"ID : {bot.user.id}")
     print(f"Statut personnalisé : {CUSTOM_STATUS}")
-    await bot.change_presence(activity=discord.CustomActivity(name=CUSTOM_STATUS), status=discord.Status.online)
+    await bot.change_presence(
+        activity=discord.Game(name=CUSTOM_STATUS),
+        status=discord.Status.online
+    )
     print("Bot prêt !")
 
 @bot.command()
